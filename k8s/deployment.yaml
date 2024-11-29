@@ -1,0 +1,26 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flow-engine-api
+  labels:
+    app: flow-engine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flow-engine-api
+  template:
+    metadata:
+      name: flow-engine-api
+      labels:
+        app: flow-engine-api
+    spec:
+      containers:
+        - name: flow-engine-api
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
+      
